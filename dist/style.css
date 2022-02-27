@@ -4,3 +4,7 @@ header {
     text-align: center;
 }
 
+.teamCards {
+    margin-top: 40px;
+    justify-content: center;
+}

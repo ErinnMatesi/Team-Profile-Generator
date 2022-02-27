@@ -11,18 +11,19 @@
 <body>
     <header>My Team</header>
 
-    <section class="teamCards">
+    <section class="card-group teamCards">
         <!-- this will need to be made in js and appended based on how many team members there are -->
-        <div class="card" style="width: 18rem;">
+        
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">${name}</h5>
               <p class="card-text">${employeeType}</p>
             </div>
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" id="list">
               <li class="list-group-item">ID: ${id}</li>
               <li class="list-group-item"><a href="mailto: ${email}">${email}</a></li>
               <!-- add conditional here to add the last li based on user input -->
-              <li class="list-group-item">School/Office/Github</li>
+              <li class="list-group-item" id="type">${generateLI(data)}</li>
             </ul>
           </div>
     </section>
