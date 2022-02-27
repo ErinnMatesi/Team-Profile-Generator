@@ -1,13 +1,13 @@
 // packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateHTML = require(//TO DO
-    );
+const generateHTML = require('./src/generateHTML');
+    // Do I actually need all of these classes listed on this file?
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
-const { engineerQs, managerQs, internQs, initialQuestions} = require('./src/questions');
+const { engineerQs, managerQs, internQs, initialQuestions, addMember} = require('./src/questions');
 
 function init() {
     inquirer.prompt(initialQuestions)
@@ -18,13 +18,27 @@ function init() {
             inquirer.prompt(engineerQs);
         } else {
             inquirer.prompt(internQs);
-        };
-        // generate Employee here?
+        }
+        // generate Employee before or after role-specific questions?
+        // build out Engineer.js first then apply to Manager and Intern
+        const newMember = new data.employeeType;
+
+        inquirer.prompt(addMember)
+        .then()
+        // need to loop back through if yes
+
+        
+        
+
+        // new Employee
+    })
+    .then((data) => {
         const generateContent = generateHTML(data);
         fs.writeFile('./dist/index.html', generateContent, (error) => 
         error ? console.log(err) : console.log('Created index.html')
         );
-    });
+    })
+    
 };
 
 // Function call to initialize app

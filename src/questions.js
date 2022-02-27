@@ -47,4 +47,14 @@ const engineerQs = [
     },
 ];
 
-export default { engineerQs, managerQs, internQs, initialQuestions};
+const addMember = [
+    {
+        name: 'addMember',
+        type: 'list',
+        message: `Do you want to add another team member?`,
+        choice: ['yes', 'no'],
+        default: 'yes'
+    },
+];
+
+export default { engineerQs, managerQs, internQs, initialQuestions, addMember};
