@@ -1,3 +1,5 @@
+import employees from "../index";
+
 function generateHTML(data) {
     return ''
 };
@@ -19,3 +21,5 @@ function generateLI(data) {
 function generateCards(data) {
     // generate a card for each team member
 };
+
+employees.forEach(generateCards(data));

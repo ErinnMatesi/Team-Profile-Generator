@@ -9,6 +9,8 @@ const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
 const { engineerQs, managerQs, internQs, initialQuestions, addMember} = require('./src/questions');
 
+let employees = [];
+
 function init() {
     inquirer.prompt(initialQuestions)
     .then((data) => {
@@ -22,6 +24,7 @@ function init() {
         // generate Employee before or after role-specific questions?
         // build out Engineer.js first then apply to Manager and Intern
         const newMember = new data.employeeType;
+        employees.push(newMember);
 
         inquirer.prompt(addMember)
         .then()
@@ -43,3 +46,5 @@ function init() {
 
 // Function call to initialize app
 init();
+
+export default employees;
