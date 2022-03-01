@@ -1,11 +1,14 @@
-const initialQuestions = [
+const initialQ = [
     {
         name: 'employeeType',
         type: 'list',
-        message: `What type of employee is this?`,
+        message: `Let's make your team! What type of employee would you like to add first?`,
         choices: ['Manager', 'Engineer', 'Intern', 'Quit'],
         default: 'Engineer'
-    },
+    }
+];
+
+const internQs = [
     {
         name: 'name',
         type: 'input',
@@ -21,9 +24,6 @@ const initialQuestions = [
         type: 'input',
         message: `What is the team member's email?`
     },
-];
-
-const internQs = [
     {
         name: 'school',
         type: 'input',
@@ -33,6 +33,21 @@ const internQs = [
 
 const managerQs = [
     {
+        name: 'name',
+        type: 'input',
+        message: `What is the team member's name?`
+    },
+    {
+        name: 'id',
+        type: 'input',
+        message: `What is the team member's ID?`
+    },
+    {
+        name: 'email',
+        type: 'input',
+        message: `What is the team member's email?`
+    },
+    {
         name: 'office',
         type: 'input',
         message: `What is the manager's office number?`
@@ -41,10 +56,25 @@ const managerQs = [
 
 const engineerQs = [
     {
+        name: 'name',
+        type: 'input',
+        message: `What is the team member's name?`
+    },
+    {
+        name: 'id',
+        type: 'input',
+        message: `What is the team member's ID?`
+    },
+    {
+        name: 'email',
+        type: 'input',
+        message: `What is the team member's email?`
+    },
+    {
         name: 'github',
         type: 'input',
         message: `What is the engineer's github username?`
     },
 ];
 
-module.exports = { engineerQs, managerQs, internQs, initialQuestions};
+module.exports = { engineerQs, managerQs, internQs, initialQ};

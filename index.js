@@ -7,42 +7,56 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
-const { engineerQs, managerQs, internQs, initialQuestions, addMember} = require('./src/questions');
+const { engineerQs, managerQs, internQs, initialQ} = require('./src/questions');
 
 const employees = [];
 
 function init() {
-    let employeeInfo = {};
-    inquirer.prompt(initialQuestions)
-    .then((data) => {
-        employeeInfo = data;
-        if(data.employeeType === 'Manager') {
-            return inquirer.prompt(managerQs);
-        } else if (data.employeeType === 'Engineer') {
-            return inquirer.prompt(engineerQs);
-        } else if (data.employeeType === 'Intern') {
-            return inquirer.prompt(internQs);
-        } else {
-            exitProgram();
-        }
-        //
-    })
-    .then((data) => {
-        //create employee
-        // push employee to employees
-        let employee;
-        if (employeeInfo.employeeType === 'Manager') {
-            employee = new Manager(employeeInfo.name, employeeInfo.id, employeeInfo.email, data.office)
-        } else if (employeeInfo.employeeType === 'Engineer') {
-            employee = new Manager(employeeInfo.name, employeeInfo.id, employeeInfo.email, data.github)
-        } else if (employeeInfo.employeeType === 'Intern') {
-            employee = new Manager(employeeInfo.name, employeeInfo.id, employeeInfo.email, data.school)
-        } 
-        
-        employees.push(employee);
-        init();
-    })
+
+    function makeTeam () {
+        inquirer.prompt(initialQ)
+        .then((data) => {
+            if(data.employeeType === 'Manager') {
+                addManager();
+            } else if (data.employeeType === 'Engineer') {
+                addEngineer();
+            } else if (data.employeeType === 'Intern') {
+                addIntern();
+            } else {
+                exitProgram();
+            }
+        })
+    }
+
+    addManager = function() {
+        inquirer.prompt(managerQs)
+        .then((data) => {
+            const manager = new Manager(data.name, data.id, data.email, data.office);
+            employees.push(manager);
+            makeTeam();
+        })
+    };
     
+    addEngineer = function() {
+        inquirer.prompt(engineerQs)
+        .then((data) => {
+            const engineer = new Engineer(data.name, data.id, data.email, data.github);
+            employees.push(engineer);
+            makeTeam();
+        })
+    };
+    
+    addIntern = function() {
+        inquirer.prompt(internQs)
+        .then((data) => {
+            const intern = new Intern(data.name, data.id, data.email, data.school);
+            employees.push(intern);
+            makeTeam();
+        })
+    };
+
+    makeTeam();
+
 };
 
 const exitProgram = function() {
@@ -52,5 +66,6 @@ const exitProgram = function() {
         process.exit();
     });
 };
+
 // Function call to initialize app
 init();
