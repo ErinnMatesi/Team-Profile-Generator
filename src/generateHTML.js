@@ -1,4 +1,4 @@
-
+// generates HTML file data
 function generateHTML(employees) {
     return `<!DOCTYPE html>
     <html lang="en">

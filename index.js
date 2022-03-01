@@ -9,10 +9,11 @@ const Engineer = require('./lib/Engineer');
 // importing questions for inquirer
 const { engineerQs, managerQs, internQs, initialQ} = require('./src/questions');
 
+// array for adding generated employees to
 const employees = [];
 
 function init() {
-
+    
     function makeTeam () {
         inquirer.prompt(initialQ)
         .then((data) => {
@@ -59,6 +60,7 @@ function init() {
 
 };
 
+// when Quit is selected, generates HTML file to go into the dist folder
 const exitProgram = function() {
         const generateContent = generateHTML(employees);
         fs.writeFile('./dist/index.html', generateContent, (error) => {
