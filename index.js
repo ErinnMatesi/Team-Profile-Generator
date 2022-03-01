@@ -2,11 +2,11 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const generateHTML = require('./src/generateHTML');
-    // Do I actually need all of these classes listed on this file?
-const Employee = require('./lib/Employee');
+// importing classes
 const Manager = require('./lib/Manager');
 const Intern = require('./lib/Intern');
 const Engineer = require('./lib/Engineer');
+// importing questions for inquirer
 const { engineerQs, managerQs, internQs, initialQ} = require('./src/questions');
 
 const employees = [];
