@@ -41,7 +41,7 @@ describe('getEmail', ()=> {
 describe('getRole', ()=> {
     it('should get the role', () => {
         const role = 'Employee';
-        const employeeInfo = new Employee('Erinn', 4, 'erinnmatesi@gmail.com', 1);
+        const employeeInfo = new Employee('Erinn', 4, 'erinnmatesi@gmail.com');
 
         expect(employeeInfo.getRole()).toEqual(role);
     });
